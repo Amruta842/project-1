@@ -1,13 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="kn">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>KisanSense - ರೈತರ ಸಹಾಯಕ</title>
 
-    <!-- Connect external CSS file -->
+    <!-- Connect external CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -21,22 +22,32 @@
 
         <p>ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಕನ್ನಡದಲ್ಲಿ ಮಾತನಾಡಿ</p>
 
+        <!-- Voice input button -->
         <button onclick="startVoice()">
             🎤 ಮಾತನಾಡಿ
         </button>
 
+        <!-- Voice output button -->
         <button onclick="speakKannada()">
             🔊 ಕೇಳಿ
         </button>
 
+        <!-- Display question and answer -->
         <div id="result">
             ನಿಮ್ಮ ಧ್ವನಿ ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ
         </div>
 
     </div>
 
-    <script src="js/app.js">
-    </script>
+    <!-- Connect Kannada voice phrases -->
+    <script src="voice/voice_phrases.js"></script>
+
+    <!-- Connect Kannada voice recognition -->
+    <script src="voice/kannada_voice.js"></script>
+
+    <!-- Connect main application JavaScript -->
+    <script src="js/app.js"></script>
 
 </body>
+
 </html>
