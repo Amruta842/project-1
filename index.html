@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KisanSense - ರೈತರ ಸಹಾಯಕ</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f7ee;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px #cccccc;
+        }
+
+        h1 {
+            color: #267a35;
+        }
+
+        p {
+            font-size: 18px;
+            color: #444;
+        }
+
+        button {
+            background: #267a35;
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            font-size: 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #195b27;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            min-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🌾 KisanSense</h1>
+
+        <p>ರೈತರಿಗಾಗಿ ಸ್ಮಾರ್ಟ್ ಬೆಲೆ ಮಾಹಿತಿ</p>
+
+        <p>ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಕನ್ನಡದಲ್ಲಿ ಮಾತನಾಡಿ</p>
+
+        <button onclick="startVoice()">
+            🎤 ಮಾತನಾಡಿ
+        </button>
+
+        <button onclick="speakKannada()">
+            🔊 ಕೇಳಿ
+        </button>
+
+        <div id="result">
+            ನಿಮ್ಮ ಧ್ವನಿ ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ
+        </div>
+
+    </div>
+
+    <script>
+        function startVoice() {
+            const SpeechRecognition =
+                window.SpeechRecognition ||
+                window.webkitSpeechRecognition;
+
+            if (!SpeechRecognition) {
+                document.getElementById("result").innerText =
+                    "ನಿಮ್ಮ ಬ್ರೌಸರ್ ಧ್ವನಿ ಗುರುತಿಸುವಿಕೆಯನ್ನು ಬೆಂಬಲಿಸುವುದಿಲ್ಲ.";
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+
+            recognition.lang = "kn-IN";
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = function () {
+                document.getElementById("result").innerText =
+                    "ದಯವಿಟ್ಟು ಮಾತನಾಡಿ...";
+            };
+
+            recognition.onresult = function (event) {
+                const text =
+                    event.results[0][0].transcript;
+
+                document.getElementById("result").innerText =
+                    "ನೀವು ಹೇಳಿದ್ದು: " + text;
+            };
+
+            recognition.onerror = function () {
+                document.getElementById("result").innerText =
+                    "ಧ್ವನಿ ಗುರುತಿಸುವಿಕೆಯಲ್ಲಿ ಸಮಸ್ಯೆ ಉಂಟಾಗಿದೆ.";
+            };
+
+            recognition.start();
+        }
+
+        function speakKannada() {
+            const message = new SpeechSynthesisUtterance(
+                "ನಮಸ್ಕಾರ, ಕಿಸಾನ್ ಸೆನ್ಸ್‌ಗೆ ಸ್ವಾಗತ"
+            );
+
+            message.lang = "kn-IN";
+
+            window.speechSynthesis.speak(message);
+        }
+    </script>
+
+</body>
+</html>
