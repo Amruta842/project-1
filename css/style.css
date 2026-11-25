@@ -1,0 +1,64 @@
+
+/* KisanSense - Main webpage styling */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f7ee;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Main content container */
+
+.container {
+    max-width: 500px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px #cccccc;
+}
+
+/* Project heading */
+
+h1 {
+    color: #267a35;
+}
+
+/* Paragraph text */
+
+p {
+    font-size: 18px;
+    color: #444;
+}
+
+/* Buttons */
+
+button {
+    background: #267a35;
+    color: white;
+    border: none;
+    padding: 14px 22px;
+    font-size: 17px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+/* Button hover effect */
+
+button:hover {
+    background: #195b27;
+}
+
+/* Voice question and answer display */
+
+#result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e8f5e9;
+    border-radius: 8px;
+    min-height: 40px;
+    white-space: pre-wrap;
+}
